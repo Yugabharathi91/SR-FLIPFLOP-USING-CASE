@@ -1,8 +1,12 @@
 # SR-FLIPFLOP-USING-CASE
 
+**NAME:YUGABHARATHI M**
+
+**REG NO:212224230314**
+
 **AIM:**
 
-To implement SR flipflop using verilog and validating their functionality using their functional tables
+To implement  SR flipflop using verilog and validating their functionality using their functional tables
 
 **SOFTWARE REQUIRED:**
 
@@ -34,53 +38,36 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-1.Type the program in Quartus software.
-
-2.Compile and run the program.
-
-3.Generate the RTL schematic and save the logic diagram.
-
-4.Create nodes for inputs and outputs to generate the timing diagram.
-
-5.For different input combinations generate the timing diagram.
-
+/* write all the steps invloved */
 
 **PROGRAM**
 ```
-Program for flipflops and verify its truth table in quartus using Verilog programming.
-Developed by:YUGABHARATHI M
-RegisterNumber:212224230314
-```
-```verilog
-module EXP_6(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
-  input s,r,clk, reset;
-  output reg q;
-  output q_bar;
- 
-  always@(posedge clk) begin // for synchronous reset
-    if(!reset)       
-			q <= 0;
-    else 
-  begin
-      case({s,r})       
-	     2'b00: q <= q;    // No change
-        2'b01:q<=1'b0;   // Write logic for reset
-        2'b10:q<=1'b1;   // Write logic for set
-        2'b11:q<=1'bx;   // Write logic for Invalid state
-      endcase
-    end
-  end
-  assign q_bar = ~q;
+module exp6(s,r,clk,q,qbar);
+input s,r,clk;
+output reg q;
+output reg qbar;
+initial 
+begin
+q=0;
+qbar=1;
+end
+always @(posedge clk)
+begin
+   q=s|(~r&q);
+   qbar=r|(~s&~q);
+end
 endmodule
 ```
-**RTL LOGIC FOR FLIPFLOPS**
-![image](https://github.com/23004513/SR-FLIPFLOP-USING-CASE/assets/138973069/2e7d6ca0-c02b-4c31-b3eb-f90bb1b7e0a5)
 
+/* Program for flipflops and verify its truth table in quartus using Verilog programming. 
+
+
+
+**RTL LOGIC FOR FLIPFLOPS**
+![Screenshot 2024-12-10 125439](https://github.com/user-attachments/assets/d223ffcf-09a8-4495-8899-3c303d44d693)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
-![image](https://github.com/23004513/SR-FLIPFLOP-USING-CASE/assets/138973069/78e77503-f09f-4696-8e28-41ec277e5350)
-
+![Screenshot 2024-12-10 125744](https://github.com/user-attachments/assets/aa88cfdb-b6de-4d93-9857-79e9a0f5421c)
 
 **RESULTS**
-
-The observation of the simulation results and confirm the successful execution of the program.
+thus the SR-Flipflop was verified successfully
